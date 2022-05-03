@@ -1,4 +1,6 @@
-# Chartreuse_Gamblers
+## Chartreuse Gamblers App
 
-Betting Sports Application designed to keep track of users bets and potential earnings and/or losses
-Hey
+## Heroku
+https://chartreuse-gamblers-app.herokuapp.com/
+
+https://git.heroku.com/chartreuse-gamblers-app.git
