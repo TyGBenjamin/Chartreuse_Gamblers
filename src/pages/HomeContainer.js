@@ -5,6 +5,10 @@ import Login from "./login";
 import Profile from "./Profile";
 import SignUp from "./SignUp";
 import Sports from "./Sports";
+import NFL from "./NFL";
+import NBA from "./NBA";
+import NHL from "./NHL";
+import MLB from "./MLB";
 
 export default function HomeContainer() {
   const [currentPage, setCurrentPage] = useState("HomePage");
@@ -25,6 +29,19 @@ export default function HomeContainer() {
     if (currentPage === "Sports") {
       return <Sports />;
     }
+    if (currentPage === "NFL") {
+      return <NFL />;
+    }
+    if (currentPage === "MLB") {
+      return <MLB />;
+    }
+    if (currentPage === "NBA") {
+      return <NBA />;
+    }
+    if (currentPage === "NHL") {
+      return <NHL />;
+    }
+
   };
 
   const handlePageChange = (page) => setCurrentPage(page);
