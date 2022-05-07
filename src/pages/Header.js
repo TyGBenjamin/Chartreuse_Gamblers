@@ -9,20 +9,20 @@ function Navigate({ handlePageChange }) {
         <div>
             <Navbar className="navbar" bg="dark" expand="lg">
                 <Container>
-                    <div>
-                        <Button variant="warning" size="lg">
+                    <div className="buttons">
+                        <Button className="btn1" variant="warning" size="lg">
                             <Nav.Link onClick={() => handlePageChange('HomePage')}>Home Page</Nav.Link>
                         </Button>
-                        <Button variant="warning" size="lg">
+                        <Button className="btn2" variant="warning" size="lg">
                             <Nav.Link onClick={() => handlePageChange('Login')}>Login</Nav.Link>
                         </Button>
-                        <Button variant="warning" size="lg">
+                        <Button className="btn3" variant="warning" size="lg">
                             <Nav.Link onClick={() => handlePageChange('SignUp')}>Sign Up</Nav.Link>
                         </Button>
-                        <Button variant="warning" size="lg">
+                        <Button className="btn4" variant="warning" size="lg">
                             <Nav.Link onClick={() => handlePageChange('Profile')}>Profile</Nav.Link>
                         </Button>
-                        <Button variant="warning" size="lg">
+                        <Button className="btn5" variant="warning" size="lg">
                             <Nav.Link onClick={() => handlePageChange('Sports')}>Sports</Nav.Link>
                         </Button>
                     </div>
