@@ -9,7 +9,7 @@ function App({ handlePageChange }) {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Welcome to Chartreuse Gamblers</h1>
+        <h1>Welcome to the Chartreuse Gamblers Sport Book.</h1>
         {/* <div>
           <Button variant="warning" size="lg">
             <Nav.Link onClick={() => handlePageChange('Login')}>Login</Nav.Link>

@@ -2,8 +2,10 @@ import React from "react";
 
 function NBA() {
     return (
-        <div>
-            <h1>"This is the NBA page"</h1>
+        <div className="nba">
+            <header className="nba-header">
+            <h1>"Welcome to the NBA betting page."</h1>
+            </header>
         </div>
     );
 }

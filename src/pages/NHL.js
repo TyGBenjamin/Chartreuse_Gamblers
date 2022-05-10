@@ -2,8 +2,10 @@ import React from "react";
 
 function NHL() {
     return (
-        <div>
-            <h1>"This is the NHL page"</h1>
+        <div className="nhl">
+            <header className="nhl-header">
+            <h1>"Welcome to the NHL betting page"</h1>
+            </header>
         </div>
     );
 }
