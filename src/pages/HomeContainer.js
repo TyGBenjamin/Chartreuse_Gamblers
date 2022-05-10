@@ -12,7 +12,7 @@ import MLB from "./MLB";
 
 export default function HomeContainer() {
   const [currentPage, setCurrentPage] = useState("HomePage");
-
+  // const handlePageChange = (page) => setCurrentPage(page);
   const renderPage = () => {
     if (currentPage === "HomePage") {
       return <HomePage />;
@@ -27,7 +27,7 @@ export default function HomeContainer() {
       return <Profile />;
     }
     if (currentPage === "Sports") {
-      return <Sports />;
+      return <Sports handlePageChange={handlePageChange}/>;
     }
     if (currentPage === "NFL") {
       return <NFL />;
@@ -45,6 +45,8 @@ export default function HomeContainer() {
   };
 
   const handlePageChange = (page) => setCurrentPage(page);
+
+
 
   return (
     <div>
