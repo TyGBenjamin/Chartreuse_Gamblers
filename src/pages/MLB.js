@@ -5,7 +5,7 @@ function MLB() {
     return (
         <div className="mlb">
             <header className="mlb-header">
-            <h1>"Welcome to the MLB betting page"</h1>
+            <h1>Welcome to the MLB betting page</h1>
             </header>
             <body>
                 <Container>
