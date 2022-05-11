@@ -1,6 +1,6 @@
 import React from "react";
-// import { BrowserRouter as Router, Switch, 
-  // Route, Redirect,} from "react-router-dom";
+// import { BrowserRouter as Router, Switch,
+// Route, Redirect,} from "react-router-dom";
 import Sports from "./Sports";
 
 class SignUp extends React.Component {
