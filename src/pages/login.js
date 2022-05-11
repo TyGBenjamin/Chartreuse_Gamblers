@@ -1,4 +1,7 @@
 import React from "react";
+import { Container } from "react-bootstrap";
+import { Route } from 'react-router-dom';
+import Sports from "./Sports";
 
 class Login extends React.Component {
   constructor(props) {
@@ -50,7 +53,8 @@ class Login extends React.Component {
   render() {
     return (
       <div>
-        <h1>"Login Page"</h1>
+        <h1 className="login-header">Please Log In</h1>
+        <Container className="login">
         <form>
           <fieldset>
             <input
@@ -77,9 +81,12 @@ class Login extends React.Component {
               {this.state.errors["password"]}
             </span>
             <br />
+            {/* <Route exact path="/Sports" render={({ history }) =>(
+            <button onClick={() => { history.push('./Sports') }}>Submit</button>)} /> */}
             <button>Submit</button>
           </fieldset>
         </form>
+        </Container>
       </div>
     );
   }

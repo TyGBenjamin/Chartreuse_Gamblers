@@ -1,4 +1,7 @@
 import React from "react";
+// import { BrowserRouter as Router, Switch, 
+  // Route, Redirect,} from "react-router-dom";
+import Sports from "./Sports";
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -137,6 +140,9 @@ class SignUp extends React.Component {
     };
     return (
       <div style={styles}>
+        <div>
+          <h1 className="signup-header">Please sign up to place bets.</h1>
+        </div>
         <form
           name="contactform"
           className="contactform"

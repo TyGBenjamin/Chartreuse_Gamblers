@@ -28,7 +28,7 @@ function NFL() {
     return (
         <div className="nfl">
             <header className="nfl-header">
-            <h1>"Welcome to the NFL betting page"</h1>
+            <h1>Welcome to the NFL betting page</h1>
             </header>
         </div>
     );
