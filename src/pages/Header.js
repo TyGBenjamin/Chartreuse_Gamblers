@@ -9,7 +9,7 @@ function Navigate({ handlePageChange }) {
         <div>
             <Navbar className="navbar" bg="dark" expand="lg">
                 <Container>
-                    <div className="buttons">
+                    <div className="header-buttons">
                         <Button className="btn1" variant="warning" size="lg">
                             <Nav.Link onClick={() => handlePageChange('HomePage')}>Home Page</Nav.Link>
                         </Button>
