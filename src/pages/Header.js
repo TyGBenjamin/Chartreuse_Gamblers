@@ -27,7 +27,7 @@ function Navigate() {
                     </Button>
                 </div>
             </Container>
-        </Navbar>
+        </Navbar> 
     )
 }
 
