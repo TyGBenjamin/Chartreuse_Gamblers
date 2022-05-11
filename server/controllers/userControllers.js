@@ -1,46 +1,56 @@
-const asyncHandler = require('express-async-handler')
-const User = require('../userModels/userModel')
+const asyncHandler = require("express-async-handler");
+const User = require("../userModels/userModel");
+const generateToken = require("../utils/generateToken");
 
-const registerUser = asyncHandler (async (req, res) => {
-    const { firstName, lastName, userName, email, password}=req.body;
+const registerUser = asyncHandler(async (req, res) => {
+  const { firstName, lastName, userName, email, password } = req.body;
 
-    const userExists= await User.findOne ({ email });
+  const userExists = await User.findOne({ email });
 
-     if (userExists){
-         res.status(404);
-         throw new Error ("user already exists");
-     }
+  if (userExists) {
+    res.status(400);
+    throw new Error("User Already Exists");
+  }
 
-     const user = await User.create({
-        firstName,
-        lastName,
-        userName,
-        email,
-        password,
-      });
+  const user = await User.create({
+    firstName,
+    lastName,
+    userName,
+    email,
+    password,
+  });
 
-      if (user) {
-        res.status(201).json({
-          name: user.firstName.lastName,
-          userName: user.userName,
-          email: user.email,
-          token: generateToken(user._id),
-        });
-      } else {
-        res.status(400);
-        throw new Error("User not found");
-      }
+  if (user) {
+    res.status(201).json({
+      firstName: user.firstName,
+      lastName: user.lastName,
+      userName: user.userName,
+      email: user.email,
+      token:generateToken(user.userName),
     });
-    
-    res.json({
-        firstName,
-        lastName,
-        userName,
-        email,
-        password,
-    });
+  } else {
+    res.status(400);
+    throw new Error("Error Occured!");
+  }
 });
 
+const authUser = asyncHandler(async (req, res) => {
+  const { userName, password } = req.body;
 
+  const user = await User.findOne({ userName });
 
-module.exports = { registerUser };
+  if (user && (await user.matchPassword(password))) {
+    res.json({
+      firstName: user.firstName,
+      lastName: user.lastName,
+      userName: user.userName,
+      email: user.email,
+      token:generateToken(user.userName),
+    });
+  } else {
+    res.status(400);
+    throw new Error("Invalid User Name or Password!");
+  }
+});
+
+module.exports = { registerUser, authUser };
