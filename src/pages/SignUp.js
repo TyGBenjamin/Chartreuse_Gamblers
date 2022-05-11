@@ -16,7 +16,7 @@ function SignUp(props) {
     if (!fields["firstName"]) {
       formIsValid = false;
       errorsToSet["firstName"] = "Cannot be empty";
-    }
+    } 
 
     if (typeof fields["firstName"] !== "undefined") {
       if (
