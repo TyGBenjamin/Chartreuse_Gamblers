@@ -9,7 +9,7 @@ function MLB() {
             </header>
             <body>
                 <Container>
-                    <h1>Choose a game, and place your bets.</h1>
+                    <h1>Choose a game and place your bets!</h1>
                 </Container>
             </body>
         </div>
