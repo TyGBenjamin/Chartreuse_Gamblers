@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container } from "react-bootstrap";
-import { Route } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Sports from "./Sports";
 
 import "../new.css";
@@ -11,70 +11,88 @@ import Icon from "../components/Icon";
 import Input from "../components/Input";
 import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 
-class Login extends React.Component {
-  constructor(props) {
-    super(props);
+function Login(props) {
+  const [fields, setFields] = useState({});
+  const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
-    this.state = {
-      fields: {},
-      errors: {},
-    };
-  }
-
-  handleValidation() {
-    let fields = this.state.fields;
-    let errors = {};
+  const handleValidation = () => {
+    const errorsToSet = {};
     let formIsValid = true;
 
     //Userame
-    if (!fields["username"]) {
+    if (!fields["userName"]) {
       formIsValid = false;
-      errors["username"] = "Cannot be empty";
+      errorsToSet["userName"] = "Cannot be empty";
     }
 
     //Password
-    if (!fields["email"]) {
+    if (!fields["password"]) {
       formIsValid = false;
-      errors["email"] = "Cannot be empty";
+      errorsToSet["password"] = "Cannot be empty";
     }
 
-    this.setState({ errors: errors });
+    setErrors(errorsToSet);
     return formIsValid;
   }
 
-  contactSubmit(e) {
+  const contactSubmit = (e) => {
     e.preventDefault();
 
-    if (this.handleValidation()) {
+    if (handleValidation()) {
       alert("Form submitted");
+      fetch('http://localhost:3001/api/users/login', {
+        method: 'POST',
+        body: JSON.stringify(fields),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then(res => res.json())
+        .then(res => {
+          if (res.token) {
+            // User Logged In Successfully
+            sessionStorage.setItem('TOKEN', res.token);
+            // TODO:  Navigate the user to the sports page.
+            navigate('/sports');
+          }
+        })
     } else {
       alert("Form has errors.");
     }
   }
 
-  handleChange(field, e) {
-    let fields = this.state.fields;
-    fields[field] = e.target.value;
-    this.setState({ fields });
+  const handleChange = (field, e) => {
+    const fieldsToSet = {
+      ...fields,
+      [field]: e.target.value
+    };
+    setFields(fieldsToSet);
   }
-}
 
-function LoginHere() {
   const FacebookBackground =
     "linear-gradient(to right, #0546A0 0%, #0546A0 40%, #663FB6 100%)";
   const InstagramBackground =
     "linear-gradient(to right, #A12AC4 0%, #ED586C 40%, #F0A853 100%)";
   const TwitterBackground =
     "linear-gradient(to right, #56C1E1 0%, #35A9CE 50%)";
+
   return (
     <MainContainer>
       <WelcomeText>Welcome</WelcomeText>
       <InputContainer>
-        <Input type="text" placeholder="Email" />
-        <Input type="password" placeholder="Password" />
+        <input value={fields.username} onChange={(e) => handleChange('userName', e)} type="text" placeholder="Username" />
+        <span style={{ color: "red" }}>
+          {errors["userName"]}
+        </span>
+        <br />
+        <input value={fields.password} onChange={(e) => handleChange('password', e)} type="password" placeholder="Password" />
+        <span style={{ color: "red" }}>
+          {errors["password"]}
+        </span>
+        <br />
       </InputContainer>
       <ButtonContainer>
-        <Button content="Enter" onClick={() => console.log("Clare")} />
+        <button type="button" onClick={(e) => contactSubmit(e)}>Enter</button>
       </ButtonContainer>
       <LoginWith>OR LOGIN WITH</LoginWith>
       <HorizontalRule />
@@ -190,47 +208,4 @@ const ForgotPassword = styled.h4`
   cursor: pointer;
 `;
 
-export default LoginHere;
-
-//   render() {
-//     return (
-//       <div>
-//         <h1 className="login-header">Please Log In</h1>
-//         <Container className="login">
-//         <form>
-//           <fieldset>
-//             <input
-//               ref="username"
-//               type="text"
-//               size="30"
-//               placeholder="Username"
-//               onChange={this.handleChange.bind(this, "username")}
-//               value={this.state.fields["username"]}
-//             />
-//             <span style={{ color: "red" }}>
-//               {this.state.errors["username"]}
-//             </span>
-//             <br />
-//             <input
-//               ref="password"
-//               type="password"
-//               size="30"
-//               placeholder="Password"
-//               onChange={this.handleChange.bind(this, "password")}
-//               value={this.state.fields["password"]}
-//             />
-//             <span style={{ color: "red" }}>
-//               {this.state.errors["password"]}
-//             </span>
-//             <br />
-//             {/* <Route exact path="/Sports" render={({ history }) =>(
-//             <button onClick={() => { history.push('./Sports') }}>Submit</button>)} /> */}
-//             <button>Submit</button>
-//           </fieldset>
-//         </form>
-//         </Container>
-//       </div>
-//     );
-//   }
-// }
-// export default Login;
+export default Login;
