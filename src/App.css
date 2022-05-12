@@ -115,6 +115,9 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    margin-left: 10%;
+    margin-right: 5%;
+    margin-top: 5%;
     width: 400px;
     height: 300px;
     justify-content: center;
@@ -125,6 +128,9 @@
     background-image: url(./Images/NbaLogo.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
+    margin-left: 10%;
+    margin-right: 5%;
+    margin-top: 5%;
     width: 400px;
     height: 300px;
     justify-content: center;
@@ -136,6 +142,10 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    margin-left: 10%;
+    margin-right: 5%;
+    margin-top: 5%;
+    margin-bottom: 10%;
     width: 400px;
     height: 300px;
     justify-content: center;
@@ -147,6 +157,10 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    margin-left: 10%;
+    margin-right: 5%;
+    margin-top: 5%;
+    width: 400px;
     width: 400px;
     height: 300px;
     justify-content: center;
