@@ -1,44 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 // import { BrowserRouter as Router, Switch,
-// Route, Redirect,} from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import Sports from "./Sports";
 
-class SignUp extends React.Component {
-  constructor(props) {
-    super(props);
+function SignUp(props) {
+  const [fields, setFields] = useState({});
+  const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
-    this.state = {
-      fields: {},
-      errors: {},
-    };
-  }
-
-  handleValidation() {
-    let fields = this.state.fields;
-    let errors = {};
+  const handleValidation = () => {
+    const errorsToSet = {};
     let formIsValid = true;
 
     //First Name
-    if (!fields["name"]) {
+    if (!fields["firstName"]) {
       formIsValid = false;
-      errors["name"] = "Cannot be empty";
-    }
+      errorsToSet["firstName"] = "Cannot be empty";
+    } 
 
-    if (typeof fields["name"] !== "undefined") {
+    if (typeof fields["firstName"] !== "undefined") {
       if (
-        !fields["name"].match(
+        !fields["firstName"].match(
           /^[a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ]+$/
         )
       ) {
         formIsValid = false;
-        errors["name"] = "Only letters";
+        errorsToSet["firstName"] = "Only letters";
       }
     }
 
     //Last Name
     if (!fields["lastName"]) {
       formIsValid = false;
-      errors["lastName"] = "Cannot be empty";
+      errorsToSet["lastName"] = "Cannot be empty";
     }
 
     if (typeof fields["lastName"] !== "undefined") {
@@ -48,34 +42,34 @@ class SignUp extends React.Component {
         )
       ) {
         formIsValid = false;
-        errors["lastName"] = "Only letters";
+        errorsToSet["lastName"] = "Only letters";
       }
     }
 
-    //Username
-    if (!fields["username"]) {
+    //UserName
+    if (!fields["userName"]) {
       formIsValid = false;
-      errors["username"] = "Cannot be empty";
+      errorsToSet["userName"] = "Cannot be empty";
     }
 
-    if (typeof fields["username"] !== "undefined") {
-      if (!fields["username"].match(/^[a-zA-Z0-9._]+$/)) {
+    if (typeof fields["userName"] !== "undefined") {
+      if (!fields["userName"].match(/^[a-zA-Z0-9._]+$/)) {
         formIsValid = false;
-        errors["username"] = "Alphanumeric characters only";
+        errorsToSet["userName"] = "Alphanumeric characters only";
       }
     }
 
-    if (typeof fields["username"] !== "undefined") {
-      if (!fields["username"].match(/^.{8,20}$/)) {
+    if (typeof fields["userName"] !== "undefined") {
+      if (!fields["userName"].match(/^.{8,20}$/)) {
         formIsValid = false;
-        errors["username"] = "Must be between 8 and 20 characters";
+        errorsToSet["userName"] = "Must be between 8 and 20 characters";
       }
     }
 
     //Password
     if (!fields["password"]) {
       formIsValid = false;
-      errors["password"] = "Cannot be empty";
+      errorsToSet["password"] = "Cannot be empty";
     }
 
     if (typeof fields["password"] !== "undefined") {
@@ -85,7 +79,7 @@ class SignUp extends React.Component {
         )
       ) {
         formIsValid = false;
-        errors["password"] =
+        errorsToSet["password"] =
           "Password must contain one uppercase letter, one lowercase letter, one number, one special character, and be between 8 and 20 characters in length.";
       }
     }
@@ -93,7 +87,7 @@ class SignUp extends React.Component {
     //Email
     if (!fields["email"]) {
       formIsValid = false;
-      errors["email"] = "Cannot be empty";
+      errorsToSet["email"] = "Cannot be empty";
     }
 
     if (typeof fields["email"] !== "undefined") {
@@ -110,110 +104,122 @@ class SignUp extends React.Component {
         )
       ) {
         formIsValid = false;
-        errors["email"] = "Email is not valid";
+        errorsToSet["email"] = "Email is not valid";
       }
     }
 
-    this.setState({ errors: errors });
+    setErrors(errorsToSet);
     return formIsValid;
   }
 
-  contactSubmit(e) {
+  const contactSubmit = (e) => {
     e.preventDefault();
 
-    if (this.handleValidation()) {
+    if (handleValidation()) {
       alert("Form submitted");
+      fetch('http://localhost:3001/api/users/register', {
+        method: 'POST',
+        body: JSON.stringify(fields),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then(res => res.json())
+        .then(res => {
+          if (res.token) {
+            // User Logged In Successfully
+            sessionStorage.setItem('TOKEN', res.token);
+            // TODO:  Navigate the user to the sports page.
+            navigate('/sports');
+          }
+        })
+
     } else {
       alert("Form has errors.");
     }
   }
 
-  handleChange(field, e) {
-    let fields = this.state.fields;
-    fields[field] = e.target.value;
-    this.setState({ fields });
+  const handleChange = (field, e) => {
+    const fieldsToSet = {
+      ...fields,
+      [field]: e.target.value
+    };
+    setFields(fieldsToSet);
   }
 
-  render() {
-    const styles = {
+  return (
+    <div style={{
       backgroundColor: "chartreuse",
-    };
-    return (
-      <div style={styles}>
-        <div>
-          <h1 className="signup-header">Please sign up to place bets.</h1>
-        </div>
-        <form
-          name="contactform"
-          className="contactform"
-          onSubmit={this.contactSubmit.bind(this)}
-        >
-          <div className="col-md-6">
-            <fieldset>
-              <input
-                ref="username"
-                type="text"
-                size="30"
-                placeholder="Username"
-                onChange={this.handleChange.bind(this, "username")}
-                value={this.state.fields["username"]}
-              />
-              <span style={{ color: "red" }}>
-                {this.state.errors["username"]}
-              </span>
-              <br />
-              <input
-                ref="password"
-                type="password"
-                size="30"
-                placeholder="Password"
-                onChange={this.handleChange.bind(this, "password")}
-                value={this.state.fields["password"]}
-              />
-              <span style={{ color: "red" }}>
-                {this.state.errors["password"]}
-              </span>
-              <br />
-              <input
-                ref="name"
-                type="text"
-                size="30"
-                placeholder="First Name"
-                onChange={this.handleChange.bind(this, "name")}
-                value={this.state.fields["name"]}
-              />
-              <span style={{ color: "red" }}>{this.state.errors["name"]}</span>
-              <br />
-              <input
-                ref="lastName"
-                type="text"
-                size="30"
-                placeholder="Last Name"
-                onChange={this.handleChange.bind(this, "lastName")}
-                value={this.state.fields["lastName"]}
-              />
-              <span style={{ color: "red" }}>
-                {this.state.errors["lastName"]}
-              </span>
-              <br />
-              <input
-                refs="email"
-                type="text"
-                size="30"
-                placeholder="Email"
-                onChange={this.handleChange.bind(this, "email")}
-                value={this.state.fields["email"]}
-              />
-              <span style={{ color: "red" }}>{this.state.errors["email"]}</span>
-              <br />
-              <button>Submit</button>
-            </fieldset>
-          </div>
-        </form>
+    }}>
+      <div>
+        <h1 className="signup-header">Please sign up to place bets.</h1>
       </div>
-    );
-  }
+      <form
+        name="contactform"
+        className="contactform"
+        onSubmit={contactSubmit.bind(this)}
+      >
+        <div className="col-md-6">
+          <fieldset>
+            <input
+              type="text"
+              size="30"
+              placeholder="Username"
+              onChange={handleChange.bind(this, "userName")}
+              value={fields["userName"]}
+            />
+            <span style={{ color: "red" }}>
+              {errors["userName"]}
+            </span>
+            <br />
+            <input
+              type="password"
+              size="30"
+              placeholder="Password"
+              onChange={handleChange.bind(this, "password")}
+              value={fields["password"]}
+            />
+            <span style={{ color: "red" }}>
+              {errors["password"]}
+            </span>
+            <br />
+            <input
+              type="text"
+              size="30"
+              placeholder="First Name"
+              onChange={handleChange.bind(this, "firstName")}
+              value={fields["firstName"]}
+            />
+            <span style={{ color: "red" }}>{errors["firstName"]}</span>
+            <br />
+            <input
+              type="text"
+              size="30"
+              placeholder="Last Name"
+              onChange={handleChange.bind(this, "lastName")}
+              value={fields["lastName"]}
+            />
+            <span style={{ color: "red" }}>
+              {errors["lastName"]}
+            </span>
+            <br />
+            <input
+              refs="email"
+              type="text"
+              size="30"
+              placeholder="Email"
+              onChange={handleChange.bind(this, "email")}
+              value={fields["email"]}
+            />
+            <span style={{ color: "red" }}>{errors["email"]}</span>
+            <br />
+            <button>Submit</button>
+          </fieldset>
+        </div>
+      </form>
+    </div>
+  );
 }
 
 // React.render(<SignUp />, document.getElementById("container"));
+
 export default SignUp;
