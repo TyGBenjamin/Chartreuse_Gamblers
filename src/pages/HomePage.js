@@ -7,9 +7,9 @@ import { Nav } from "react-bootstrap";
 
 function App({ handlePageChange }) {
   return (
-    <div className="App">
+    <div lassName="App">
       <header className="App-header">
-        <h1>Welcome to the Chartreuse Gamblers Sport Book.</h1>
+        <h1>Welcome to the Chartreuse Gamblers Sports Book.</h1>
         {/* <div>
           <Button variant="warning" size="lg">
             <Nav.Link onClick={() => handlePageChange('Login')}>Login</Nav.Link>
