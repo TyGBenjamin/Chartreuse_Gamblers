@@ -13,7 +13,7 @@ body {
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
-  background-image: url("./backgroundmlb.jpg");
+  background-image: url("./Images/backgroundmlb.jpg");
   height: 100vh;
   width: 100vw;
 }
