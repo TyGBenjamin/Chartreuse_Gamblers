@@ -1,6 +1,50 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 
+const axios = require ('axios');
+
+const apiKey = "fb81fa0baf4e34e314305c4c84a219ff"
+
+const sportKey = 'baseball_mlb'
+const regions = 'us'
+const markets = 'h2h'
+const oddsFormat = 'decimal'
+const dateFormat = 'iso'
+
+axios.get('https://api.the-odds-api.com/v4/sports', {
+    params: {
+        apiKey
+    }
+})
+.then(response => {
+    console.log(response.data)
+})
+.catch(error => {
+    console.log('Error status', error.response.status)
+    console.log(error.response.data)
+})
+
+axios.get(`https://api.the-odds-api.com/v4/sports/${sportKey}/odds`, {
+    params: {
+        apiKey,
+        regions,
+        markets,
+        oddsFormat,
+        dateFormat,
+    }
+})
+.then(response => {
+    console.log(JSON.stringify(response.data))
+
+    console.log('Remaining requests', response.headers['x-requests-remains'])
+    console.log('Used requests', response.headers['x-requests-used'])
+})
+.catch(error => {
+    console.log('Error status', error.response.status)
+    console.log(error.response.data)
+})
+
+
 function MLB() {
     return (
         <div className="mlb-header">
@@ -10,7 +54,6 @@ function MLB() {
             <div>
                 <h1>Championship Odds</h1>
                 <h2>Los Angeles Dodgers</h2><h2>+500</h2>
-                
                 <h2>New York Mets</h2><h2>+750</h2>
                 <h2>New York Yankees</h2><h2>+750</h2>
                 <h2>Toronto Blue Jays</h2><h2>+850</h2>
