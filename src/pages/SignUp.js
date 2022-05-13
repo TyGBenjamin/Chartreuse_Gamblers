@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 // import { BrowserRouter as Router, Switch,
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import Sports from "./Sports";
+import "../new.css";
+
+import styled from "styled-components";
+import Button from "../components/Button";
+import Icon from "../components/Icon";
+import Input from "../components/Input";
+import { FaFacebookF, FaGoogle, FaTwitter } from "react-icons/fa";
+import { Container } from "react-bootstrap";
 
 function SignUp(props) {
   const [fields, setFields] = useState({});
@@ -16,7 +24,7 @@ function SignUp(props) {
     if (!fields["firstName"]) {
       formIsValid = false;
       errorsToSet["firstName"] = "Cannot be empty";
-    } 
+    }
 
     if (typeof fields["firstName"] !== "undefined") {
       if (
@@ -110,116 +118,231 @@ function SignUp(props) {
 
     setErrors(errorsToSet);
     return formIsValid;
-  }
+  };
 
   const contactSubmit = (e) => {
     e.preventDefault();
 
     if (handleValidation()) {
       alert("Form submitted");
-      fetch('http://localhost:3001/api/users/register', {
-        method: 'POST',
+      fetch("http://localhost:3000/api/users/register", {
+        method: "POST",
         body: JSON.stringify(fields),
         headers: {
-          'Content-Type': 'application/json'
-        }
-      }).then(res => res.json())
-        .then(res => {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((res) => {
           if (res.token) {
             // User Logged In Successfully
-            sessionStorage.setItem('TOKEN', res.token);
+            sessionStorage.setItem("TOKEN", res.token);
             // TODO:  Navigate the user to the sports page.
-            navigate('/sports');
+            navigate("/sports");
           }
-        })
-
+        });
     } else {
       alert("Form has errors.");
     }
-  }
+  };
 
   const handleChange = (field, e) => {
     const fieldsToSet = {
       ...fields,
-      [field]: e.target.value
+      [field]: e.target.value,
     };
     setFields(fieldsToSet);
-  }
+  };
+  const FacebookBackground =
+    "linear-gradient(to right, #0546A0 0%, #0546A0 40%, #663FB6 100%)";
+  const GoogleBackground =
+    "linear-gradient(to right, #fff 0%, #fff 10%, #990 100%)";
+  const TwitterBackground =
+    "linear-gradient(to right, #56C1E1 0%, #35A9CE 50%)";
 
   return (
-    <div style={{
-      backgroundColor: "chartreuse",
-    }}>
-      <div>
-        <h1 className="signup-header">Please sign up to place bets.</h1>
-      </div>
-      <form
-        name="contactform"
-        className="contactform"
-        onSubmit={contactSubmit.bind(this)}
-      >
-        <div className="col-md-6">
-          <fieldset>
+    <div className="sectionDiv">
+      <div className="loginBox">
+        <MainContainer>
+          <WelcomeText>Sign Up</WelcomeText>
+          <InputContainer>
             <input
+              className="inputBox"
+              value={fields.username}
+              onChange={(e) => handleChange("userName", e)}
               type="text"
-              size="30"
               placeholder="Username"
-              onChange={handleChange.bind(this, "userName")}
-              value={fields["userName"]}
             />
-            <span style={{ color: "red" }}>
-              {errors["userName"]}
-            </span>
+            <span style={{ color: "red" }}>{errors["userName"]}</span>
             <br />
             <input
+              className="inputBox"
+              value={fields.password}
+              onChange={(e) => handleChange("password", e)}
               type="password"
-              size="30"
               placeholder="Password"
-              onChange={handleChange.bind(this, "password")}
-              value={fields["password"]}
             />
-            <span style={{ color: "red" }}>
-              {errors["password"]}
-            </span>
+            <span style={{ color: "red" }}>{errors["password"]}</span>
             <br />
             <input
+              className="inputBox"
+              value={fields.firstName}
+              onChange={(e) => handleChange("firstName", e)}
               type="text"
-              size="30"
-              placeholder="First Name"
-              onChange={handleChange.bind(this, "firstName")}
-              value={fields["firstName"]}
+              placeholder="FirstName"
             />
             <span style={{ color: "red" }}>{errors["firstName"]}</span>
             <br />
             <input
+              className="inputBox"
+              value={fields.lastName}
+              onChange={(e) => handleChange("lastName", e)}
               type="text"
-              size="30"
-              placeholder="Last Name"
-              onChange={handleChange.bind(this, "lastName")}
-              value={fields["lastName"]}
+              placeholder="Lastname"
             />
-            <span style={{ color: "red" }}>
-              {errors["lastName"]}
-            </span>
+            <span style={{ color: "red" }}>{errors["lastName"]}</span>
             <br />
             <input
-              refs="email"
-              type="text"
-              size="30"
+              className="inputBox"
+              value={fields.email}
+              onChange={(e) => handleChange("email", e)}
+              type="email"
               placeholder="Email"
-              onChange={handleChange.bind(this, "email")}
-              value={fields["email"]}
             />
             <span style={{ color: "red" }}>{errors["email"]}</span>
             <br />
-            <button>Submit</button>
-          </fieldset>
-        </div>
-      </form>
+          </InputContainer>
+          <ButtonContainer className="button__container">
+            <button
+              type="button"
+              className="signUpButton"
+              onClick={(e) => contactSubmit(e)}
+            >
+              Enter
+            </button>
+          </ButtonContainer>
+          <LoginWith></LoginWith>
+          <HorizontalRule />
+          <IconsContainer>
+            <Icon color={FacebookBackground}>
+              <FaFacebookF
+                onClick={() => (window.location = "https://www.facebook.com/")}
+                href="https://www.facebook.com/"
+              />
+            </Icon>
+            <Icon color={GoogleBackground} href="">
+              <FaGoogle
+                onClick={() => (window.location = "https://www.google.com/")}
+              />
+            </Icon>
+            <Icon href="https://www.twitter.com/" color={TwitterBackground}>
+              <FaTwitter
+                onClick={() => (window.location = "https://www.twitter.com/")}
+              />
+            </Icon>
+          </IconsContainer>
+          <ForgotPassword></ForgotPassword>
+        </MainContainer>
+      </div>
     </div>
   );
 }
 
-// React.render(<SignUp />, document.getElementById("container"));
+const MainContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 80vh;
+  width: 30vw;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(8.5px);
+  -webkit-backdrop-filter: blur(8.5px);
+  border-radius: 10px;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.4rem;
+  @media only screen and (max-width: 320px) {
+    width: 80vw;
+    height: 90vh;
+    hr {
+      margin-bottom: 0.3rem;
+    }
+    h4 {
+      font-size: small;
+    }
+  }
+  @media only screen and (min-width: 360px) {
+    width: 80vw;
+    height: 90vh;
+    h4 {
+      font-size: small;
+    }
+  }
+  @media only screen and (min-width: 411px) {
+    width: 80vw;
+    height: 90vh;
+  }
+  @media only screen and (min-width: 768px) {
+    width: 80vw;
+    height: 80vh;
+  }
+  @media only screen and (min-width: 1024px) {
+    width: 70vw;
+    height: 50vh;
+  }
+  @media only screen and (min-width: 1280px) {
+    width: 30vw;
+    height: 80vh;
+  }
+`;
+
+const WelcomeText = styled.h2`
+  margin: 3rem 0 2rem 0;
+`;
+
+const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 45%;
+  width: 100%;
+  padding: 10rem;
+`;
+
+const ButtonContainer = styled.div`
+  padding-top: 200;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const LoginWith = styled.h5`
+  cursor: pointer;
+`;
+
+const HorizontalRule = styled.hr`
+  width: 90%;
+  height: 0.3rem;
+  border-radius: 0.8rem;
+  border: none;
+  background: linear-gradient(to right, #14163c 0%, #03217b 79%);
+  background-color: #ebd0d0;
+  margin: 1.5rem 0 1rem 0;
+  backdrop-filter: blur(25px);
+`;
+
+const IconsContainer = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  margin: 2rem 0 3rem 0;
+  width: 80%;
+`;
+
+const ForgotPassword = styled.h4`
+  cursor: pointer;
+`;
 
 export default SignUp;
