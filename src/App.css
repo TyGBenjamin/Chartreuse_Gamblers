@@ -1,3 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;1,100;1,200&display=swap");
+
+* {
+    margin: 0;
+    padding: 50;
+    box-sizing: border-box;
+  }
+  
 .App {
     text-align: center;
 }
@@ -147,7 +155,7 @@
     margin-left: 10%;
     margin-right: 5%;
     margin-top: 5%;
-    margin-bottom: 10%;
+    /* margin-bottom: 10%; */
     width: 400px;
     height: 300px;
     justify-content: center;
@@ -162,6 +170,7 @@
     margin-left: 10%;
     margin-right: 5%;
     margin-top: 5%;
+    margin-bottom: 10%;
     width: 400px;
     width: 400px;
     height: 300px;
@@ -176,7 +185,7 @@
     min-height: 200vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white; 
@@ -185,12 +194,12 @@
 .nba-header {
     background-image: url("./Images/nba-back.jpeg");
     background-size: contain;
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat; */
     /* background-color: #282c34; */
     min-height: 200vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
@@ -199,12 +208,12 @@
 .nfl-header {
     background-image: url("./Images/NFL-Back.jpeg");
     background-size: contain;
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat; */
     /* background-color: #282c34; */
     min-height: 200vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
@@ -217,10 +226,9 @@
     min-height: 200vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     justify-content: center;
     font-size: calc(10px + 2vmin);
-    font-family: cursive;
     color: white;
 }
 
@@ -249,4 +257,10 @@
     background-image: url("./Images/profile-page.jpeg");
     background-size: cover;
     min-height: 200vh;
+}
+
+.loginDiv {
+    background-image: url("./Images/backgroundmlb.jpg");
+    min-height: 125vh;
+    font-family: "Poppins", sans-serif;
 }

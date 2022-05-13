@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // import { BrowserRouter as Router, Switch,
 import { useNavigate } from "react-router-dom";
 import Sports from "./Sports";
-import "../new.css";
+// import "../new.css";
 
 import styled from "styled-components";
 import Button from "../components/Button";

@@ -25,6 +25,50 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 
+const axios = require ('axios');
+
+const apiKey = "fb81fa0baf4e34e314305c4c84a219ff"
+
+const sportKey = 'americanfootball_nfl'
+const regions = 'us'
+const markets = 'h2h'
+const oddsFormat = 'decimal'
+const dateFormat = 'iso'
+
+axios.get('https://api.the-odds-api.com/v4/sports', {
+    params: {
+        apiKey
+    }
+})
+.then(response => {
+    console.log(response.data)
+})
+.catch(error => {
+    console.log('Error status', error.response.status)
+    console.log(error.response.data)
+})
+
+axios.get(`https://api.the-odds-api.com/v4/sports/${sportKey}/odds`, {
+    params: {
+        apiKey,
+        regions,
+        markets,
+        oddsFormat,
+        dateFormat,
+    }
+})
+.then(response => {
+    console.log(JSON.stringify(response.data))
+
+    console.log('Remaining requests', response.headers['x-requests-remains'])
+    console.log('Used requests', response.headers['x-requests-used'])
+})
+.catch(error => {
+    console.log('Error status', error.response.status)
+    console.log(error.response.data)
+})
+
+
 function NFL() {
     return (
         <div className="nfl-header">
