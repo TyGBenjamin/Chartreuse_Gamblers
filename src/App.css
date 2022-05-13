@@ -38,8 +38,10 @@
     }
 }
 
-.sportsPage {
-    background-color: #282c34;
+.sports-page {
+    background-image: url("./Images/sportsbook.jpeg");
+    background-size: cover;
+    /* background-color: #282c34; */
     min-height: auto;
 }
 
@@ -168,8 +170,10 @@
 }
 
 .mlb-header {
-    background-color: #282c34;
-    min-height: 20vh;
+    background-image: url("./Images/backgroundmlb.jpg");
+    background-size: contain;
+    /* background-color: #282c34; */
+    min-height: 200vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -179,8 +183,11 @@
 }
 
 .nba-header {
-    background-color: #282c34;
-    min-height: 20vh;
+    background-image: url("./Images/nba-back.jpeg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* background-color: #282c34; */
+    min-height: 200vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -190,8 +197,11 @@
 }
 
 .nfl-header {
-    background-color: #282c34;
-    min-height: 20vh;
+    background-image: url("./Images/NFL-Back.jpeg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* background-color: #282c34; */
+    min-height: 200vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -201,11 +211,13 @@
 }
 
 .nhl-header {
-    background-color: #282c34;
-    min-height: 20vh;
+    background-image: url("./Images/nhl-back.jpeg");
+    background-size: contain;
+    /* background-color: #282c34; */
+    min-height: 200vh;
     display: flex;
     flex-direction: column;
-    align-items: left;
+    align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
     font-family: cursive;
@@ -232,3 +244,8 @@
     align-items: center;
     justify-content: center;
 }
+
+/* .nfl {
+    background-image: url("./Images/NFL-Back.jpeg");
+    background-size: 100%;
+} */
