@@ -245,7 +245,8 @@
     justify-content: center;
 }
 
-/* .nfl {
-    background-image: url("./Images/NFL-Back.jpeg");
-    background-size: 100%;
-} */
+.profile-page {
+    background-image: url("./Images/profile-page.jpeg");
+    background-size: cover;
+    min-height: 200vh;
+}

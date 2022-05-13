@@ -10,6 +10,7 @@ function MLB() {
             <div>
                 <h1>Championship Odds</h1>
                 <h2>Los Angeles Dodgers</h2><h2>+500</h2>
+                
                 <h2>New York Mets</h2><h2>+750</h2>
                 <h2>New York Yankees</h2><h2>+750</h2>
                 <h2>Toronto Blue Jays</h2><h2>+850</h2>
