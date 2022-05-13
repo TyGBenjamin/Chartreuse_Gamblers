@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 function Sports() {
     return (
-        <Container>
+        <div className="sports-page">
             <div className="row text-center">
                 <Button className="col-xs-12 col-md-6 btn6" variant="warning" size="lg">
                     <Nav.Link as={Link} to="/MLB">MLB</Nav.Link>
@@ -21,7 +21,7 @@ function Sports() {
                     <Nav.Link as={Link} to="/NHL">NHL</Nav.Link>
                 </Button>
             </div>
-        </Container>
+        </div>
     )
 }
 
