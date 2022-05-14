@@ -1,0 +1,134 @@
+header {
+  height: 110vh;
+  padding-top: 7rem;
+  overflow: hidden;
+}
+
+.header__container {
+  text-align: center;
+  height: 100%;
+  position: relative;
+}
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>.CODE <<<<<<<<<<<<<<<<<<<<<<<<<<< */
+
+.cta {
+  margin-top: 2.5rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  padding-bottom: 15px;
+}
+
+.social__media {
+  display: flex;
+  flex-direction: row;
+  /* align-items: center; */
+  gap: 1.5rem;
+  bottom: 0rem;
+  align-content: center;
+}
+.social__media:hover {
+  font-size: x-large;
+  color: black;
+}
+
+.social__media::after {
+  content: "";
+  width: 1px;
+  height: 2rem;
+  background: var(--color-primary);
+}
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>>.. */
+
+.me {
+  width: 22rem;
+  height: 40rem;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  /* left: calc(50%-11rem); */
+  margin-top: 5rem;
+  border-radius: 12rem 12rem 0 0;
+  overflow: hidden;
+}
+
+.profile__head {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 100px;
+}
+
+.btnn {
+  width: max-content;
+  display: inline-block;
+  color: var(--color-primary);
+  padding: 0.75rem 1.2rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  border: 1px solid grey;
+  transition: smooth;
+}
+
+.btnn1 {
+  width: max-content;
+  display: inline-block;
+  color: var(--color-primary);
+  font-weight: 600;
+  padding: 0.75rem 1.2rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  border: 1px solid grey;
+  transition: smooth;
+  border-color: black;
+}
+
+.btnn1:hover {
+  border-color: transparent;
+  background: black;
+  color: yellow;
+  cursor: pointer;
+}
+
+.btnn:hover {
+  border-color: transparent;
+  background: white;
+  cursor: pointer;
+}
+
+.btnn-primary {
+  background: lightgoldenrodyellow;
+  color: var(--color-bg);
+}
+
+/* .scroll__down {
+    position: absolute;
+    right: -2.3rem;
+    bottom: 5rem;
+    transform: rotate(90deg);
+    font-weight: 300;
+  } */
+
+/* >>>>>>>>>>>>> MEDIA (medium screen) QUERIES <<<<<<<<<<<<<<< */
+
+@media screen and (max-width: 1024px) {
+  .header {
+    height: 68vh;
+  }
+}
+
+/* >>>>>>>>>>>>> MEDIA (small screen) QUERIES <<<<<<<<<<<<<<< */
+
+@media screen and (max-width: 600px) {
+  .header {
+    height: 100vh;
+  }
+
+  .social__media,
+  .scroll__down {
+    display: none;
+  }
+}

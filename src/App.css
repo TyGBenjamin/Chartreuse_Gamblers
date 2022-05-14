@@ -4,6 +4,8 @@
   margin: 0;
   padding: 50;
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.92rem;
 }
 
 .App {
@@ -71,6 +73,15 @@
 }
 
 .btn1 {
+  margin-right: 5%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  width: 150px;
+  height: 50px;
+  background-color: gold;
+  border-radius: 8px;
+}
+.btnn1 {
   margin-right: 5%;
   margin-top: 2%;
   margin-bottom: 2%;
@@ -182,13 +193,17 @@
   background-image: url("./Images/backgroundmlb.jpg");
   background-size: contain;
   /* background-color: #282c34; */
-  min-height: 200vh;
+  height: 10;
   display: flex;
   flex-direction: column;
   align-items: left;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.mlbDiv {
+  height: 75%;
 }
 
 .nba-header {
@@ -264,16 +279,9 @@
   min-height: 125vh;
   font-family: "Poppins", sans-serif;
 }
-.loginBox {
-  padding-top: 4rem;
-}
 
 .sectionDiv {
   background-image: url("./Images/backgroundmlb.jpg");
   min-height: 125vh;
   font-family: "Poppins", sans-serif;
-}
-
-.sc-kDDrLX.bzTElr {
-  display: flex;
 }
