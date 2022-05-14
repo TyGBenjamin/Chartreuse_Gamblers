@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // import { BrowserRouter as Router, Switch,
 import { useNavigate } from "react-router-dom";
 import Sports from "./Sports";
-// import "../new.css";
+import "../index.css";
 
 import styled from "styled-components";
 import Button from "../components/Button";
@@ -164,7 +164,6 @@ function SignUp(props) {
     <div className="sectionDiv">
       <div className="loginBox">
         <MainContainer>
-          <WelcomeText>Sign Up</WelcomeText>
           <InputContainer>
             <input
               className="inputBox"
@@ -252,7 +251,7 @@ const MainContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 80vh;
+  height: 100vh;
   width: 30vw;
   background: rgba(255, 255, 255, 0.15);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
@@ -304,11 +303,11 @@ const WelcomeText = styled.h2`
 const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  height: 45%;
+  height: 55%;
   width: 100%;
-  padding: 10rem;
+  padding: 12rem;
 `;
 
 const ButtonContainer = styled.div`

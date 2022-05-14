@@ -2,18 +2,22 @@ const express = require("express");
 const { ApolloServer } = require("apollo-server-express");
 const path = require("path");
 const cors = require("cors");
-const userRoutes = require('./routes/userRoutes');
-const { notFound, errorHandler } = require("../server/middlewares/errorMiddleware");
+const userRoutes = require("./routes/userRoutes");
+const {
+  notFound,
+  errorHandler,
+} = require("../server/middlewares/errorMiddleware");
 
 const { typeDefs, resolvers } = require("./schemas");
 const db = require("./config/connection.js");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
-/* const server = new ApolloServer({
+
+const server = new ApolloServer({
   typeDefs,
   resolvers,
-}); */
+});
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -27,13 +31,13 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
-app.use('/api/users', userRoutes)
+app.use("/api/users", userRoutes);
 
-app.use(notFound)
-app.use(errorHandler)
+app.use(notFound);
+app.use(errorHandler);
 
 // Create a new instance of an Apollo server with the GraphQL schema
-/* const startApolloServer = async (typeDefs, resolvers) => {
+const startApolloServer = async (typeDefs, resolvers) => {
   await server.start();
   server.applyMiddleware({ app });
 
@@ -45,10 +49,12 @@ app.use(errorHandler)
       );
     });
   });
-}; */
+};
 
-app.listen(PORT, () => console.log(`Express Server Listening on localhost:${PORT}`))
+app.listen(PORT, () =>
+  console.log(`Express Server Listening on localhost:${PORT}`)
+);
 
 module.exports = { notFound, errorHandler };
 // Call the async function to start the server
-// startApolloServer(typeDefs, resolvers);
+startApolloServer(typeDefs, resolvers);
