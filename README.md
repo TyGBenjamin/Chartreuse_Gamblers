@@ -32,7 +32,7 @@ The GitHUB for the application can be viewed here [GitHUB Repository]()
 ## Preview
 
 A video for previewing the usage of this application can be found in the following link
-[Click Here for Video Walkthrough](https://github.com/TyGBenjamin/Chartreuse_Gamblers)
+[Click Here for Video Walkthrough](https://drive.google.com/file/d/1ualu4wDZquwMoBg8RBFopAcwAypYOiwj/view)
 
 ![Screenshot of Application](https://user-images.githubusercontent.com/94323045/168415038-f1b5f0e6-e458-4e0e-a261-0d7ba93f27f1.jpg)
 
