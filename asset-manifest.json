@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/Chartreuse_Gamblers/static/css/main.80ffb94b.css",
+    "main.js": "/Chartreuse_Gamblers/static/js/main.a9e8e551.js",
+    "static/js/787.0fb7c116.chunk.js": "/Chartreuse_Gamblers/static/js/787.0fb7c116.chunk.js",
+    "static/media/MlbLogo.png": "/Chartreuse_Gamblers/static/media/MlbLogo.4fac151c35a515e7f8fd.png",
+    "static/media/backgroundmlb.jpg": "/Chartreuse_Gamblers/static/media/backgroundmlb.c5639bfbd93b296d59a4.jpg",
+    "static/media/nba-back.jpeg": "/Chartreuse_Gamblers/static/media/nba-back.45105265a223f32dc0a0.jpeg",
+    "static/media/NbaLogo.jpeg": "/Chartreuse_Gamblers/static/media/NbaLogo.0d79aacbe841c90996c5.jpeg",
+    "static/media/NflLogo.jpeg": "/Chartreuse_Gamblers/static/media/NflLogo.beb81be8123267a05417.jpeg",
+    "static/media/sportsbook.jpeg": "/Chartreuse_Gamblers/static/media/sportsbook.17fddafdcb5c9f5b71f1.jpeg",
+    "static/media/10.png": "/Chartreuse_Gamblers/static/media/10.852f22026c911859065f.png",
+    "static/media/NFL-Back.jpeg": "/Chartreuse_Gamblers/static/media/NFL-Back.5bdc8954e7f68de4364c.jpeg",
+    "static/media/nhl-back.jpeg": "/Chartreuse_Gamblers/static/media/nhl-back.267df320ca81fc76d90f.jpeg",
+    "static/media/profile-page.jpeg": "/Chartreuse_Gamblers/static/media/profile-page.a5f4252e549a04cf8d92.jpeg",
+    "static/media/NhlLogo.jpeg": "/Chartreuse_Gamblers/static/media/NhlLogo.3e2a68df51c063556de0.jpeg",
+    "index.html": "/Chartreuse_Gamblers/index.html",
+    "main.80ffb94b.css.map": "/Chartreuse_Gamblers/static/css/main.80ffb94b.css.map",
+    "main.a9e8e551.js.map": "/Chartreuse_Gamblers/static/js/main.a9e8e551.js.map",
+    "787.0fb7c116.chunk.js.map": "/Chartreuse_Gamblers/static/js/787.0fb7c116.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.80ffb94b.css",
+    "static/js/main.a9e8e551.js"
+  ]
+}
