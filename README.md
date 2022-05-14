@@ -16,7 +16,7 @@ Users can also use the app to simply keep track of their favorite team's odds of
 
 ## Installation
 
-Initially you musty have Node installed
+Initially you must have Node installed
 Also have to initiliaze the npm command to install the required dependencies which can
 be found in the package.json file
 Nontheless, All the Npms needed are listed in the package.json file.
