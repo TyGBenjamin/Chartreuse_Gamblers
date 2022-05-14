@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import HomePage from "./HomePage";
 import Login from "./login";
 import Profile from "./Profile";
+import ProfileHeader from "../components/profileHeader";
 import SignUp from "./SignUp";
 import Sports from "./Sports";
 import NFL from "./NFL";
@@ -20,7 +21,7 @@ export default function HomeContainer() {
         <Route path="home" element={<HomePage />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<SignUp />} />
-        <Route path="profile" element={<Profile />} />
+        <Route path="profile" element={<ProfileHeader />} />
         <Route path="sports" element={<Sports />} />
         <Route path="nfl" element={<NFL />} />
         <Route path="mlb" element={<MLB />} />
