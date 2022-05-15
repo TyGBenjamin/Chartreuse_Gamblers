@@ -51,9 +51,9 @@ const startApolloServer = async (typeDefs, resolvers) => {
   });
 };
 
-app.listen(PORT, () =>
-  console.log(`Express Server Listening on localhost:${PORT}`)
-);
+// app.listen(PORT, () =>
+//   console.log(`Express Server Listening on localhost:${PORT}`)
+// );
 
 module.exports = { notFound, errorHandler };
 // Call the async function to start the server

@@ -2,7 +2,7 @@ import React from "react";
 const axios = require("axios");
 require("dotenv").config();
 
-const apiKey = API_KEY;
+const apiKey = process.env.API_KEY;
 
 const sportKey = "icehockey_nhl";
 const regions = "us";
