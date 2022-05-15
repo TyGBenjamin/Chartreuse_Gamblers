@@ -138,11 +138,11 @@ function SignUp(props) {
       //       // User Logged In Successfully
       //       sessionStorage.setItem("TOKEN", res.token);
       //       // TODO:  Navigate the user to the sports page.
-           window.location.href="sports";
-          // }
-        // });
-  //   } else {
-  //     alert("Form has errors.");
+      window.location.href = "sports";
+      // }
+      // });
+      //   } else {
+      //     alert("Form has errors.");
     }
   };
 

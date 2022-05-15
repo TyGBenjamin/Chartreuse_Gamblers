@@ -2,9 +2,8 @@ import React from "react";
 import { Container } from "react-bootstrap";
 
 const axios = require("axios");
-require("dotenv").config();
 
-const apiKey = process.env.API_KEY;
+const apiKey = "fb81fa0baf4e34e314305c4c84a219ff";
 
 const sportKey = "baseball_mlb";
 const regions = "us";

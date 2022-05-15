@@ -41,24 +41,24 @@ function Login(props) {
 
     if (handleValidation()) {
       alert("Form submitted");
-      // fetch("http://localhost:3001/api/users/login", {
-      //   method: "POST",
-      //   body: JSON.stringify(fields),
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      // })
-      //   .then((res) => res.json())
-      //   .then((res) => {
-      //     if (res.token) {
-      //       // User Logged In Successfully
-      //       sessionStorage.setItem("TOKEN", res.token);
-      //       // TODO:  Navigate the user to the sports page.
-            window.location.href="sports";
-    //       }
-    //     });
-    // } else {
-    //   alert("Form has errors.");
+      fetch("http://localhost:3001/api/users/login", {
+        method: "POST",
+        body: JSON.stringify(fields),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          if (res.token) {
+            // User Logged In Successfully
+            sessionStorage.setItem("TOKEN", res.token);
+            // TODO:  Navigate the user to the sports page.
+            window.location.href = "sports";
+          }
+        });
+    } else {
+      alert("Form has errors.");
     }
   };
 

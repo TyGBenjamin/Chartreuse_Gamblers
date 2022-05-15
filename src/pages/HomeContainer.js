@@ -3,7 +3,6 @@ import Header from "./Header";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./HomePage";
 import Login from "./login";
-import Profile from "./Profile";
 import ProfileHeader from "../components/profileHeader";
 import SignUp from "./SignUp";
 import Sports from "./Sports";

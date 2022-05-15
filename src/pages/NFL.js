@@ -1,11 +1,33 @@
+// import React, { useState, useEffect } from "react";
+
+// function NFL() {
+// //     const [odds, setOddsData] = useState(null);
+
+// //     useEffect(() => {
+// //         /*
+// //         fetch('/odds')
+// //         .then(res => res.json())
+// //         .then(data => setOddsData([...data]))
+// //         */
+// //     }, []);
+
+// //     console.log(odds);
+
+//     return (
+//         <div>
+//             <h1>"This is the NFL page"</h1>
+//         </div>
+//     );
+// }
+// export default NFL;
+
 // // fetch api
 import React from "react";
 import { Container } from "react-bootstrap";
 
 const axios = require("axios");
-require("dotenv").config();
 
-const apiKey = process.env.API_KEY;
+const apiKey = "fb81fa0baf4e34e314305c4c84a219ff";
 
 const sportKey = "americanfootball_nfl";
 const regions = "us";
